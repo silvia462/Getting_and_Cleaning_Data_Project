@@ -33,30 +33,32 @@ The following files are available for the train and test data.
 - 'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
 
 ## Code
-### 1. Merges the training and the test sets to create one data set.
-- Using `download.file()` together with `unzip()` function to download the zip file from website to my compute. 
-- Using `read.table()` function to load "X_train.txt", "y_train", "subject_train" in train directory and "X_test", "y_test", "subject_test" into R.
-- Using `rbind()` and `cbind()` functions to merge all train and test data together.
+#### 1. Merges the training and the test sets to create one data set.
+- `download.file()`: Download the zip file from the website, and save it into my computer. 
 
-### 2. Extract only the measurements on the mean and standard deviation for each measurement. 
+- `unzip()`: Unzip data. 
 
-- Using `read.table()` function to load "features.txt" into R.
-- Using `grep()` function to find the indexes with "mean()" and "sd()".
-- select all relevant columns and set the columns name using the selected features name.
+- `read.table()`: Load "X_train.txt", "y_train", "subject_train", "X_test", "y_test", "subject_test" into R.
 
-### 3. Uses descriptive activity names to name the activities in the data set
+- `rbind()`: Creat new matrices by row-binding. 
 
-- Using `read.table()` function to load "activity_labels.txt" into R.
-- Using `factor()` function with arguments "levels = " and "labels = " to replace the numbers to activity names.
+- `cbind()`: Creat new matrices by column-binding. 
+#### 2. Extract only the measurements on the mean and standard deviation for each measurement. 
 
-### 4. Appropriately labels the data set with descriptive variable names
+- `read.table()`: Load "features.txt" into R.
 
-- Using `gsub()` function to replace all characters I think they are needed to replace.
+- `grep()`: Find "mean()" and "sd()".
 
-### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+#### 3. Uses descriptive activity names to name the activities in the data set
 
-- Using `group_by()` and `summarise_each()` functions in `dplyr` package to calculate all means for each activity and wach subject.
-- Using `group_by()` and `summarise_each()` functions in `dplyr` package to calculate all means for each activity and wach subject.
+- `read.table()`: Load "activity_labels.txt" into R.
 
+- `factor()`: Change the arguments' names. 
 
+#### 4. Appropriately labels the data set with descriptive variable names
 
+- `gsub()`: Replace characters.
+
+#### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+- `group_by()` & `summarise_each()`: Calculate all means for each activity and subject.
